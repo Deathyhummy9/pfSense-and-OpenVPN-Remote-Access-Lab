@@ -36,14 +36,28 @@ It simulates a typical remote employee VPN scenario, showcasing networking, fire
 
 - Internet connectivity verified
 
-<h2>Installation Steps</h2>
+Step 1 getting the virtual machine read
+-
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
+
+first head over to  pfsense and install the pfsense .iso for the image for the virtual machine then head to virtual box and change the senond adpater to an interal net work you will do the same for linuxs(clients) first adapater for the lab to work head to storage and in the empty disk but the iso image
+
+<img width="960" height="776" alt="pf1" src="https://github.com/user-attachments/assets/4bebfffd-eb3d-4496-8be7-1849c8da4f26" />
+<img width="1909" height="1028" alt="pf2" src="https://github.com/user-attachments/assets/db6e92c4-607a-470a-90c1-07fe8c633feb" />
+
+
+
+Step 2  Installing and configing pfsense
+-
+Start the VM go throught with the intsalltion procees as regualr  and once its donereboot and press option 2 to set the ip interface from 192.168.1.100/24 to 192.168.1.5
 <br />
+<img width="1917" height="1080" alt="pf3" src="https://github.com/user-attachments/assets/bede2461-9b65-4239-a104-3e117b1d50b2" />
+<img width="1906" height="981" alt="Screenshot (153)" src="https://github.com/user-attachments/assets/f8158f42-f8b8-4a23-b863-89ccbd52f567" />
+
+Step 3 linux V
+-
+set up the linux VM go to netowkr setting in the first adpater choose interal make sure its the same as pfsense vm start it up and head to the ip 192.168.1.100  to make sure it has connected to pfsense the go to bash and type ifconfig and see the ip address
+<img width="1914" height="1071" alt="pf4" src="https://github.com/user-attachments/assets/7d90892c-7776-4b12-827d-ccc44196ef5a" />
+<img width="1917" height="1020" alt="pf6" src="https://github.com/user-attachments/assets/54cf91d0-a21f-49e7-a0c9-c8470e421277" />
 
 
