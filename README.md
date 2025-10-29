@@ -119,6 +119,13 @@ It should show traffic going from the Linux client → pfSense VPN → Internet
 <img width="1929" height="1046" alt="pf9" src="https://github.com/user-attachments/assets/b2ae3223-55e6-42bb-8175-759ed64e6d9e" />
 <img width="1914" height="1080" alt="pf10" src="https://github.com/user-attachments/assets/2d561416-1a0b-4242-ad92-f85c18b82f1b" />
 
+step 6
+-
+Connecte to the VPN after installing  and go on the pf sense website to make sure it works in the tunnel as well
+<img width="1883" height="1048" alt="imp00" src="https://github.com/user-attachments/assets/48d03478-0d86-44ab-a60b-c03b58da21d4" />
+<img width="1844" height="1080" alt="imp0" src="https://github.com/user-attachments/assets/0a3561c7-fdd1-461e-83a6-0ced8211050f" />
+
+
 
 ### why it matters
 This lab simulates a realistic remote access VPN deployment. It demonstrates skills in VPN configuration, firewall rules, routing, and network troubleshooting — all of which are directly relevant to IT Support, SysAdmin, and Network Admin roles
