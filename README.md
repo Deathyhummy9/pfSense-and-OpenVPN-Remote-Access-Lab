@@ -156,8 +156,19 @@ Should display Active: active (running).
 From the VPN-connected client (VM2), test SSH access:
 
 ssh mint@192.168.1.51
+Test again from the VPN client — you should now be able to SSH into the endpoint through the secure tunnel.
 
 
+Step 9 Simulating the Radio Service
+-
+Now that SSH and connectivity are verified, we’ll simulate a radio management interface.
 
+Install a lightweight web service:
 
+sudo apt install apache2 -y
+sudo systemctl enable apache2
+sudo systemctl start apache2
+From the VPN client:
+ping 192.168.1.51
+curl http://192.168.1.51
 
