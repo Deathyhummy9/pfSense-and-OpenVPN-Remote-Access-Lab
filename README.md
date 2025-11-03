@@ -3,9 +3,9 @@
 
 </p>
 
-<h1>pfSense and OpenVPN remote access lab</h1>
-This project demonstrates how to configure pfSense as an OpenVPN server and connect a Linux client to securely route traffic through the VPN.
-It simulates a typical remote employee VPN scenario, showcasing networking, firewall, and routing fundamentals<br />
+<h1>pfSense and OpenVPN Remote Radio Endpoint Access Lab</h1>
+This project demonstrates how to configure **pfSense** as an **OpenVPN server** and connect a **remote Linux client** to securely access an internal **radio endpoint device** on a protected LAN.  
+It simulates a realistic field technician workflow — connecting through VPN to manage network-connected radios or base stations — while showcasing networking, routing, and firewall fundamentalss<br />
 
 
 
@@ -16,33 +16,36 @@ It simulates a typical remote employee VPN scenario, showcasing networking, fire
 - virtual box
 - Linux Mint (VirtualBox)
 - OpenVPN
+-OpenSSH (Server + Client)
 
 <h2>Operating Systems Used </h2>
 
 - linux mint
 
-- pfsense
+- pfsense+openvpn
 
 
 <h2>List of Prerequisites</h2>
 
-- pfSense ISO installed in VirtualBox
-
-- installed Linux Mint and configured
-
-- OpenVPN client installed on Linux
-
-- pfSense firewall and LAN configured
-
-- Internet connectivity verified
+- pfSense ISO installed in VirtualBox  
+- Two Linux Mint VMs (Client + Endpoint) configured  
+- OpenVPN client installed on Linux  
+- pfSense firewall and LAN configured  
+- Internet connectivity verified  
 
 Step 1 getting the virtual machine read
 -
-Download the pfSense ISO image and create a new VirtualBox VM.
+Download the pfSense ISO image and create new VirtualBox VMs.
 
-For the pfSense VM: set the second adapter to “Internal Network.”
+- **pfSense VM:**  
+  - Adapter 1 = NAT (WAN)  
+  - Adapter 2 = Internal Network (named `RLab`)
 
-For the Linux (client) VM: set the first adapter to the same internal network as pfSense.
+- **Linux Client VM:**  
+  - Adapter 1 = Internal Network (`Lab`)
+
+- **Radio Endpoint VM:**  
+  - Adapter 1 = Internal Network (`Lab`)
 
 Go to Storage and mount the pfSense ISO on the pfSense VM.
 
@@ -171,4 +174,42 @@ sudo systemctl start apache2
 From the VPN client:
 ping 192.168.1.51
 curl 192.168.1.51
+and you have an estblished connection to the remote device through a vpn tunnel and ssh
 
+### Step 10 — Configuring pfSense Firewall Rules for Radio-Only Access
+-
+Now that the VPN tunnel is working, we’ll restrict it so remote users can reach **only** the radio endpoint device (192.168.1.51) — not the entire LAN.
+
+1. Log in to pfSense Web UI → **Firewall → Rules → OpenVPN**  
+2. Add a new rule with these parameters:  action:pass  interface: OpenVPN   protocol:any source:10.8.0.0 vpn tunnel network destnation: 192.168.1.51
+3. save and apply changed and restart server
+4. now it will only work to ping 192.168.1.51 and curl 192.168.1.51
+##Why It Matters
+
+This lab replicates a secure remote access environment similar to how public safety or industrial technicians manage radio or communication endpoints.
+It demonstrates:
+
+pfSense VPN configuration
+
+Secure remote access
+
+SSH + HTTP service deployment
+
+LAN segmentation and connectivity testing
+
+Network troubleshooting fundamentals
+
+
+##Lab Environment Info
+
+pfSense Version: 2.7.1
+
+OpenVPN Version: 2.6.x
+
+Linux Mint 21.2 (Client + Radio Endpoint)
+
+VirtualBox 7.0
+
+LAN Network: 192.168.1.0/24
+
+VPN Tunnel: 10.8.0.0/24
