@@ -170,5 +170,5 @@ sudo systemctl enable apache2
 sudo systemctl start apache2
 From the VPN client:
 ping 192.168.1.51
-curl http://192.168.1.51
+curl 192.168.1.51
 
