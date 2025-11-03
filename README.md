@@ -184,8 +184,10 @@ Now that the VPN tunnel is working, we’ll restrict it so remote users can reac
 2. Add a new rule with these parameters:  action:pass  interface: OpenVPN   protocol:any source:10.8.0.0 vpn tunnel network destnation: 192.168.1.51
 3. save and apply changed and restart server
 4. now it will only work to ping 192.168.1.51 and curl 192.168.1.51
-##Why It Matters
 
+   
+Why It Matters
+-
 This lab replicates a secure remote access environment similar to how public safety or industrial technicians manage radio or communication endpoints.
 It demonstrates:
 
@@ -200,8 +202,8 @@ LAN segmentation and connectivity testing
 Network troubleshooting fundamentals
 
 
-##Lab Environment Info
-
+Lab Environment Info
+-
 pfSense Version: 2.7.1
 
 OpenVPN Version: 2.6.x
