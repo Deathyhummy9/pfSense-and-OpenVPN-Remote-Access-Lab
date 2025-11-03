@@ -122,13 +122,42 @@ Connecte to the VPN after installing  and go on the pf sense website to make sur
 <img width="1844" height="1080" alt="imp0" src="https://github.com/user-attachments/assets/0a3561c7-fdd1-461e-83a6-0ced8211050f" />
 
 
+Step 7 Setting up the Radio Endpoint Device (VM3)
+-
+Now that the VPN tunnel is active and the Linux Mint client can securely connect to pfSense, we’ll simulate a **radio endpoint** on the LAN.  
+This represents an on-site device such as a two-way radio controller, repeater, or network-linked base station that field technicians access remotely.
 
-### why it matters
-This lab simulates a realistic remote access VPN deployment. It demonstrates skills in VPN configuration, firewall rules, routing, and network troubleshooting — all of which are directly relevant to IT Support, SysAdmin, and Network Admin roles
+1. Create or reuse a second Linux Mint VM named **Radio-Endpoint**.  
+2. In VirtualBox → **Settings → Network**, attach it to the same **Internal Network** as pfSense.  
+3. Boot the VM and assign a static IP address of **192.168.1.51** with gateway **192.168.1.5** (the pfSense LAN).  
 
- Lab Environment Info
-- pfSense Version: 2.7.1
-- OpenVPN Version: 2.6.x
-- Linux Mint 21.2
-- VirtualBox 7.0
+Inside the terminal, verify
+ifconfig
+after ping to pfsense to make sure its on the same network
+
+
+Step 8 Enabling Secure SSH Access to the Radio Endpoint
+-
+In a real deployment, engineers would use SSH to securely access and configure field radio endpoints remotely through VPN.
+We’ll now enable that functionality on the endpoint VM.
+
+Install the OpenSSH server:
+sudo apt update
+sudo apt install openssh-server -y
+
+Enable and start the service:
+sudo systemctl enable ssh
+sudo systemctl start ssh
+
+
+Verify it’s active:
+sudo systemctl status ssh
+Should display Active: active (running).
+From the VPN-connected client (VM2), test SSH access:
+
+ssh mint@192.168.1.51
+
+
+
+
 
