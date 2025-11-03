@@ -161,6 +161,7 @@ From the VPN-connected client (VM2), test SSH access:
 ssh mint@192.168.1.51
 Test again from the VPN client — you should now be able to SSH into the endpoint through the secure tunnel.
 
+<img width="1919" height="862" alt="Screenshot (317)" src="https://github.com/user-attachments/assets/b9d98135-24b1-475f-a4e5-d76655a3b142" />
 
 Step 9 Simulating the Radio Service
 -
@@ -184,6 +185,7 @@ Now that the VPN tunnel is working, we’ll restrict it so remote users can reac
 2. Add a new rule with these parameters:  action:pass  interface: OpenVPN   protocol:any source:10.8.0.0 vpn tunnel network destnation: 192.168.1.51
 3. save and apply changed and restart server
 4. now it will only work to ping 192.168.1.51 and curl 192.168.1.51
+
 
    
 Why It Matters
